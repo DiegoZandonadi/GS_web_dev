@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color, #f4f4f4);
+    color: #222;
+    transition: background 0.3s;
+}
 .slideshow-section {
     margin: 30px auto;
     max-width: 600px;
