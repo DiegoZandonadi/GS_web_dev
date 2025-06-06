@@ -1,22 +1,22 @@
-// Slideshow
-let slideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-}
-function nextSlide() {
-    slideIndex = (slideIndex + 1) % slides.length;
-    showSlide(slideIndex);
-}
-function prevSlide() {
-    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-    showSlide(slideIndex);
-}
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
-showSlide(slideIndex);
-setInterval(nextSlide, 5000);
+
+// Validação de formulário
+const form = document.getElementById('subscribeForm');
+form.addEventListener('submit', function(e) {
+    let valid = true;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    document.getElementById('nameError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    if (!name) {
+        document.getElementById('nameError').textContent = 'Nome é obrigatório.';
+        valid = false;
+    }
+    if (!email) {
+        document.getElementById('emailError').textContent = 'Email é obrigatório.';
+        valid = false;
+    } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        document.getElementById('emailError').textContent = 'Email inválido.';
+        valid = false;
+    }
+    if (!valid) e.preventDefault();
+});
